@@ -4,5 +4,5 @@
 
 ## draft
 
-* [如何优雅地使用Gradle](draft/ru-he-you-ya-di-shi-yong-gradle.md)
+* [如何优雅地使用Gradle](draft/how-to-gracefully-use-gradle.md)
 
