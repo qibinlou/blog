@@ -1,9 +1,8 @@
 # Table of contents
 
-* [Hello World](README.md)
+* [Blog](README.md)
 
-## sub
+## draft
 
-* [Test page](sub/test-page.md)
-* [Untitled](sub/untitled.md)
+* [如何优雅地使用Gradle](draft/ru-he-you-ya-di-shi-yong-gradle.md)
 
