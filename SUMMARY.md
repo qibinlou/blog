@@ -4,5 +4,7 @@
 
 ## draft
 
-* [如何优雅地使用Gradle](draft/how-to-gracefully-use-gradle.md)
+## published
+
+* [如何优雅地使用Gradle](published/how-to-gracefully-use-gradle.md)
 
