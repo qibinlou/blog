@@ -14,13 +14,19 @@ Gradle是一个基于Apache Ant和Apache Maven概念的JVM项目自动化建构�
 
 ### 使用Gradle Wrapper
 
-Gradle Wrapper是官方推荐的使用Gradle的方式，因为它可以简单地声明要使用的Gradle的版本，然后在项目构建中使用那个指定的版本来跑各个构建任务。这样，不管你用的是命令行还是IDE，不管你用的是Windows还是Linux, 你用的都是同一个命令，比如`./gradlew build`，此处`./gradlew` 即是所说的Gradle Wrapper。
+Gradle Wrapper是官方推荐的使用Gradle的方式，因为它可以简单地声明要使用的Gradle的版本，然后在项目构建中使用那个指定的版本来跑各个构建任务。这样，不管你用的是命令行还是IDE，不管你用的是Windows还是Linux, 你用的都是同一个命令和版本，比如`./gradlew build`，此处`./gradlew` 即是所说的Gradle Wrapper。
 
 生成Gradle Wrapper，你只需要在项目根目录下运行`gradle wrapper --gradle-version 5.4.1`, 你可以根据需要选择适合你的gradle-version。
 
 ### --parallel
 
 随着项目的发展，产品代码和测试代码与日俱增，然而项目的整体构建速度通常都会不断变慢。变慢的原因有很多种，比如有不可避免的编译时间增长，也有可以改善的测试运行方式。Gradle 5.x 版本中已经做了很多优化，比如默认的incremental build\(增量编译\)和build cache\(构建缓存\)。此外，现在大部分电脑都配置了多核CPU，Gradle提供了`--parallel` 功能来帮助你基于多核CPU并行运行Gradle的任务。比如你的项目里有三个无交叉依赖Gradle子模块，当你在一台六核的机器上跑时，三个子模块可以并行编译和运行测试，理论上你最多可以节省2/3的构建时间。
+
+如果你想把这个选项作为人和人跑任何Gradle命令时的默认选项，你可以在你项目根目录的**gradle.properties** 文件里添加下面一行
+
+```java
+org.gradle.parallel=true
+```
 
 ### --fail-fast
 
@@ -75,11 +81,11 @@ public class FooTest {
 
 ### api / implementation / ~~compile~~
 
-很多构建系统都会碰到一个棘手的问题：如果合理解决**Transitive Dependency**（依赖传递\)? 比方说现在有如下依赖关系`App -> Lib A -> Lib B`, 如果_Lib B_ 只在_Lib A_的函数内部使用到，理想的情况下_App_的代码是不能直接调用_Lib B_的，因为_Lib B_只是_Lib A_的内部实现方式\(internal implementation\)。 然而大部分情况下你会发现_App_的代码竟然能调用_Lib B_!
+很多构建系统都会碰到一个棘手的问题：如何合理解决**Transitive Dependency**（依赖传递\)? 比方说现在有如下依赖关系`App -> Lib A -> Lib B`, 如果_Lib B_ 只在_Lib A_的函数内部使用到，理想的情况下_App_的代码是不能直接调用_Lib B_的，因为_Lib B_只是_Lib A_的内部实现方式\(internal implementation\)。 然而大部分情况下你会发现_App_的代码竟然能调用_Lib B_ 😱🤔
 
 以上就是在Gradle脚本里使用`compile`关键词的副作用。不要以为这仅仅是一个内部实现暴露的问题，它还会造成依赖版本解决出错导致应用层出错，还会减慢项目代码的整体编译速度。
 
-Gradle从3.4版本起其实就提供了一个解决方案。它把`compile`语义拆封成两类，`api`和`implementation`。`api`等价于被_deprecated_的`compile`。至于`implementation`, 以上面的例子为基础
+Gradle从3.4版本起其实就提供了一个解决方案。它把`compile`语义拆分成两类，`api`和`implementation`。`api`等价于被_deprecated_的`compile`。至于`implementation`, 以上面的例子为基础
 
 ```text
 # build.gradle of App
