@@ -47,7 +47,13 @@
 
 细分地讲，期权常见的形式有ISO \(Incentive stock options\)和Nonqualified stock options \(NQSO\)。早期的创业公司大部分会选择ISO形式，因为ISO相比较NQSO是更具有税收优势的。简单地讲，同样的10000股ISO和NQSO，在你exercise的时候，ISO下你是你是不用交个人所得税或者资产增值税的，在NQSO下你需要为\(现在公司股价-strike price）的增值部分交个人所得税的。NQSO相比ISO的优势在于美国法律规定一年一个员工能收到的ISO形式下的股权奖励价值最多只能有100k，如果超过的话必须要用NQSO的形式。当然这条规定对大部分员工都没啥影响，因为一年100k的股权激励在创业公司里面是个很大的数字了，大部分情况下只有公司的高层才能领到这种包裹。关于ISO和NQSO更细节的对比，我在这就不展开了，感兴趣的读者可以参考[这篇文章](https://blog.wealthfront.com/improving-tax-results-stock-options-restricted-stock-grants/)。
 
+关于期权还有一点必须注意，那就是当员工离开公司时, 很多公司的规定是该员工必须要在离职后三个月内exercise她已经vest的期权，不然就作废重新回收到公司的期权池里。如果该公司发展不错的话，该员工要exercise她的期权一般要自掏腰包准备用于exercise的现金来购买vest的股票，小至几万，多至几十万，要在三个月内拿出这么多现金其实是很有难度的。有些人和下一个雇主谈判让下一个雇主在sign on bonus上多给点来cover这个刚需，有时候甚至能谈到让下一个雇主完全cover你因为跳槽要付出的各种代价。硅谷的一些公司试图改善这种期权金手铐，比如Quora, Pinterest和Coinbase, 他们允许员工在离职后的三年至七年内exercise已经vest的期权，大大减轻了员工离职时的经济负担，也给员工选择合适exercise提供了更长的周期。
+
 ### ESPP （员工内部持股计划）
+
+全称Employee Stock Purchase Plan \(ESPP\) ，是不少美国的上市大公司用来激励员工的另外一个方式。简单地说，假设X公司现在股价为$100，员工可以按10%的折扣价买入公司的股票, 一年最多能买入价值25k的股票。如果该员工在买入的当天立即卖出的，相当于一次性收获了10%的收益。当然美国税务局不是吃干饭的, 公司给你的10%折扣对应的价值是要按个人收入所得税交税的，等你卖出股票后还要为增值的部分再交一笔资产增值税\(Capital Gain Tax\)。
+
+和上文的股票、RSU、期权相比，ESPP更接近于401K能match多少比例这样的公司福利，通常情况下并不会给员工带来很大的财富增长空间。如果你真觉得这个公司股票很有潜力，你也大可以在公开市场上直接购买其股票而无需为其工作。RSU、期权则期望员工通过这种激励方式产生主人翁精神，从而更积极地、更有效地参与到公司的建设发展之中。
 
 
 
@@ -59,6 +65,7 @@
 4. \*\*\*\*[**https://blog.wealthfront.com/an-employee-perspective-on-equity/**](https://blog.wealthfront.com/an-employee-perspective-on-equity/)\*\*\*\*
 5. \*\*\*\*[**https://www.inc.com/business-insider/tech-companies-employee-turnover-average-tenure-silicon-valley.html**](https://www.inc.com/business-insider/tech-companies-employee-turnover-average-tenure-silicon-valley.html)\*\*\*\*
 6. \*\*\*\*[**https://blog.wealthfront.com/improving-tax-results-stock-options-restricted-stock-grants/**](https://blog.wealthfront.com/improving-tax-results-stock-options-restricted-stock-grants/)\*\*\*\*
+7. \*\*\*\*[**https://blog.wealthfront.com/good-espp-no-brainer/**](https://blog.wealthfront.com/good-espp-no-brainer/)\*\*\*\*
 
 \*\*\*\*
 

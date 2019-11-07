@@ -24,9 +24,13 @@ Gradle Wrapper是官方推荐的使用Gradle的方式，因为它可以简单地
 
 如果你想把这个选项作为人和人跑任何Gradle命令时的默认选项，你可以在你项目根目录的**gradle.properties** 文件里添加下面一行
 
+{% tabs %}
+{% tab title="" %}
 ```java
 org.gradle.parallel=true
 ```
+{% endtab %}
+{% endtabs %}
 
 ### --fail-fast
 
@@ -37,9 +41,7 @@ org.gradle.parallel=true
 `--fail-fast` 只适用于Gradle Test类别的构建任务，比如 `./gradlew test --fail-fast`。用于其他任务则会报错，比如`./gradlew build --fail-fast`，因为build不是Test类别的任务。除了用于命令行，你还可以在Gradle脚本里设置：
 
 ```text
-test {
-    failFast = true
-}
+test {    failFast = true}
 ```
 
 ### -t, --continuous
@@ -47,20 +49,7 @@ test {
 `--continuous` 帮助开发者在本地开发时更高效地验证他们的changes。比如你在写一个类的单元测试，你已经有以下的两个文件
 
 ```java
-# Foo.java
-public class Foo {
-    public int sum(int a, int b) {
-        return a + b;
-    }
-}
-
-# FooTest.java
-public class FooTest {
-    @Test
-    public void testSum() {
-        // TODO: implement me
-    }
-}
+# Foo.javapublic class Foo {    public int sum(int a, int b) {        return a + b;    }}# FooTest.javapublic class FooTest {    @Test    public void testSum() {        // TODO: implement me    }}
 ```
 
 你可以在命令行运行`./gradlew test --tests FooTest --continuous` 或者缩减版`./gradlew test --tests FooTest -t`，当你改变`Foo.java`的实现或者`FooTest.java`的测试代码时，Gradle会检测到文件内容改变，从而重新编译运行你的测试，无需你人工执行同样的命令。
@@ -88,16 +77,7 @@ public class FooTest {
 Gradle从3.4版本起其实就提供了一个解决方案。它把`compile`语义拆分成两类，`api`和`implementation`。`api`等价于被_deprecated_的`compile`。至于`implementation`, 以上面的例子为基础
 
 ```text
-# build.gradle of App
-dependencies {
-   api project('LibA')
-}
-
-# build.gradle of Lib A
-dependencies {
-   api project('models')
-   implementation 'com.google.guava:guava:18.0'
-}
+# build.gradle of Appdependencies {   api project('LibA')}# build.gradle of Lib Adependencies {   api project('models')   implementation 'com.google.guava:guava:18.0'}
 ```
 
 这样_Guava:18_这个内部依赖就不能渗透到_App_那里。如果_App_刚好也需要使用_Guava_, 它就需要显示定义_Guava_为它的依赖，而且它可以自由选择_Guava_的版本而不用担心版本误用或者冲突。
