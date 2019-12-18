@@ -24,13 +24,11 @@ Gradle Wrapper是官方推荐的使用Gradle的方式，因为它可以简单地
 
 如果你想把这个选项作为人和人跑任何Gradle命令时的默认选项，你可以在你项目根目录的**gradle.properties** 文件里添加下面一行
 
-{% tabs %}
-{% tab title="" %}
+{% code title="" %}
 ```java
 org.gradle.parallel=true
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 ### --fail-fast
 
