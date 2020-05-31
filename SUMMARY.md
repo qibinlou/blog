@@ -4,6 +4,8 @@
 
 ## draft
 
+* [AMP Email——构建可交互的动态邮件](draft/amp-email-gou-jian-ke-jiao-hu-de-dong-tai-you-jian.md)
+
 ## published
 
 * [我的2019技术之路小结](published/summary-of-my-2019-in-tech.md)
