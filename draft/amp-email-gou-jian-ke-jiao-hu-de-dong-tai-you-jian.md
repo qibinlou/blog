@@ -14,7 +14,7 @@
 
 以礼品卡邮件为例，当一个买家在某个Squarespace商家的网站上买了他们的礼品卡后，礼品卡接收人会收到一封邮件，里面包含了礼品卡金额、卡号、问候语等主要信息。用过礼品卡的朋友可能有过这个痛点，就是一张大额的礼品卡用了一次后放了一段时间，等到想起来再想去用时忘了里面还有多少余额，在美国大型的零售商的礼品卡一般支持打电话或者去官网查询余额。但Squarespace的礼品卡功能目前还不支持买家直接查询余额，现在的唯一途径是假装checkout，输入礼品卡号，在checkout里我们会告诉你礼品卡的余额。可想而知，这并不是理想的用户体验。我们就设想在礼品卡邮件里添加一个礼品卡余额查询模块，这样买家只需打开那封礼品卡邮件就能实时看到里面的余额——看起来非常理想的AMP使用场景！
 
-现在我来粗略地讲解下整个实现流程及一些体会。本质上我们需要在邮件里异步调用我们后端系统的礼品卡余额查询接口，然后把拿到的余额动态展示在邮件里。我的Hack Week项目合伙人设计主管Sean帮我设计了一个拟物化的礼品卡余额查询UI，见下图（TODO\)。
+现在我来粗略地讲解下整个实现流程及一些体会。本质上我们需要在邮件里异步调用我们后端系统的礼品卡余额查询接口，然后把拿到的余额动态展示在邮件里。我的Hack Week项目合伙人设计师Sean帮我设计了一个拟物化的礼品卡余额查询UI，见下图（TODO\)。
 
 对web工程熟悉的朋友应该不难理解接下来的几大步骤：1）实现后端礼品卡余额查询接口 2）实现邮件端**跨域**异步请求 3）实现邮件客户端动态内容渲染。
 
@@ -24,7 +24,7 @@
 
 搞定第二步后，在邮件客户端实现动态内容渲染其实并不难，熟悉HTML和React的朋友都能轻松上手。
 
-最简单的HelloWorld示例代码
+最简单的HelloWorld示例代码, 几个关键点：html标签上的`⚡4email`属性，AMP的JS框架异步加载，`amp-custom`属性来界定AMP的CSS规则。
 
 {% code title="HelloWorld-amp.html" %}
 ```markup
@@ -41,8 +41,9 @@
   </style>
 </head>
 <body>
-  <h1>Hello world, I am an AMP EMAIL!</h1>
-<!doctype html>
+  <h1>Hello, I am an AMP EMAIL!</h1>
+</body>
+</html>
 ```
 {% endcode %}
 
@@ -96,8 +97,28 @@
 </html>
 ```
 
+更多的例子可参考[AMP Playground](https://playground.amp.dev/?runtime=amp4email)。
+
+目前业界已经有几个大公司开始试水AMP Email，比如Booking.com, Pinterest。下面的几个动图可以形象地展示AMP Email的表达性和交互性。
+
+![Source: https://www.sparkpost.com/amp-for-email/](../.gitbook/assets/gmailamp-pinterest-01.gif)
+
+![source: https://htmlemail.io/blog/getting-started-amp-for-email](../.gitbook/assets/ecwid1.gif)
+
+AMP Email的局限性有以下几点：
+
+* 目前只有几个大厂的邮件客户端支持它：Gmail, Outlook, Mail.ru
+* 由于目前普及度有限，实际产品中你需要同时准备一个传统HTML格式的邮件和一个AMP格式的邮件，目前的邮件协议支持同时发送多种格式，由客户端决定使用和渲染其中一种。支持的客户端自然会优先渲染AMP格式，不支持的客户端则退而求其次渲染传统HTML格式
+* AMP格式是个规则严格的HTML的CSS子集，格式不正确的邮件会被客户端枪毙拒绝加载
+* AMP格式的邮件只有原始的收件人能加载，如果forward给另一个人AMP格式的邮件不会被forward，只有HTML或者纯文字的格式版本会被forward
+
+怎么样，是不是跃跃欲试想把这个新技术用到你的产品中去了呢？
+
 **References**
 
 * [**https://zhuanlan.zhihu.com/p/42919326**](https://zhuanlan.zhihu.com/p/42919326)\*\*\*\*
 * \*\*\*\*[**https://zhuanlan.zhihu.com/p/21741712**](https://zhuanlan.zhihu.com/p/21741712)\*\*\*\*
+* \*\*\*\*[**https://www.sparkpost.com/amp-for-email/**](https://www.sparkpost.com/amp-for-email/)\*\*\*\*
+* \*\*\*\*[**https://htmlemail.io/blog/getting-started-amp-for-email**](https://htmlemail.io/blog/getting-started-amp-for-email)\*\*\*\*
+* \*\*\*\*[**https://medium.com/pinterest-engineering/building-interactive-email-with-amp-2a90969c0093**](https://medium.com/pinterest-engineering/building-interactive-email-with-amp-2a90969c0093)\*\*\*\*
 
