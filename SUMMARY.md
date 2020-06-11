@@ -4,7 +4,7 @@
 
 ## draft
 
-* [AMP Email——构建可交互的动态邮件](draft/amp-email-gou-jian-ke-jiao-hu-de-dong-tai-you-jian.md)
+* [AMP Email——构建可交互的动态邮件](draft/building-interactive-emails-using-amp-email.md)
 
 ## published
 
