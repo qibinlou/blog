@@ -20,14 +20,19 @@ Compound其实就是个去中心化的货币市场（Money Market\), 对标传�
 
 细心的用户会发现实操中Supply Rate（对标余额宝投资年化收益）总是低于Borrow Rate（借贷利息），就会纳闷这中间的利润去哪了？生活中，A向B借了一万元，承诺5%借贷利息，那么A就能拿到5%的借贷收益。在Compound的模型中，投资者是一起拼团把资金放在了一个共同的池子里，想要借钱的人不是单独和某个投资者借钱，而是和那个池子借钱。假设池子里有一万元，有人按5%的借贷利息借了一千元，还款时归还一千元本金和五十元利息，池子里的人需要平摊那五十元利息，算下来收益率就是 `50 / 10000 = 0.5%`**，**也就是借贷利息5%乘以资金利用率（Utilization） 10%。推导一个极端情况，池子里的一万元钱被全部借走，还款时归还一万元本金和五百元利息，此时Supply Rate就等于Borrow Rate，因为资金利用率为100%。
 
+上面讲的都是些模型和理论基础知识，实际应用中Compound协议是如何把现实世界的这套金融规则编码化、自动化、去中心化的呢？这里需要介绍最重要的一个设计: cToken。我们去银行柜台买理财，存入一万元，银行给你一张凭证，凭此凭证和你的身份证件，到期后可以要求兑换本金和收益。cToken对应的就是那张凭证，在基于Web3的去中心化网络里，你的Wallet就是你的身份证件，凭借cToken和Wallet你就能向Compound协议要求赎回本金和收益。以USDC借贷市场为例，假设初始时`1 cUSDC = 1 USDC`**，**随着借贷池里利息收入\(USDC\)的增长，cUSDC对USDC的兑换比例会随着时间越来越高。比如用户最初存入1000 USDC，拿到1000 cUSDC 作为兑换凭证。一年后，`1 cUSDC = 1.2 USDC`**，**用户想要套现，就调用Compound协议的赎回功能，此时的1000 cUSDC代表的USDC为1200 USDC，所以用户最终拿回1000 USDC的本金和200 USDC的利息收入。整个过程全部基于智能合约的公开可验证的逻辑，**不需要任何人员和机构**参与这个过程来帮助验证身份、确认权益、发放收益。至于cToken对它代表的的底层资产兑换比例的设定和更新，Compound智能合约会在每产生一个新以太坊区块时根据那个时间点池子里累计的本金和利息更新每个市场里的cToken的兑换比例。对标传统银行柜台每个工作日早上在小黑板上更新最新的理财收益率，Compound智能合约是在每个以太坊新区块形成时更新最新的Borrow Rate和Supply Rate。通常十几秒会出一个新区块，也就是说每十几秒这些利率会被更新一次。
+
+以上就是关于Compound协议入门级的介绍，希望能帮助更多的读者了解它，甚至打开一扇通向更广大的DeFi世界的窗。
+
 \*\*\*\*
 
-**。。**
+**.。**
 
 \*\*\*\*
 
 **参考文献**
 
-1. \*\*\*\*[**https://ethereumprice.org/guides/article/compound-finance-explained/**](https://ethereumprice.org/guides/article/compound-finance-explained/)\*\*\*\*
-2. \*\*\*\*[**https://zhuanlan.zhihu.com/p/114319666**](https://zhuanlan.zhihu.com/p/114319666)\*\*\*\*
+1. \*\*\*\*[**https://compound.finance/documents/Compound.Whitepaper.pdf**](https://compound.finance/documents/Compound.Whitepaper.pdf)\*\*\*\*
+2. \*\*\*\*[**https://ethereumprice.org/guides/article/compound-finance-explained/**](https://ethereumprice.org/guides/article/compound-finance-explained/)\*\*\*\*
+3. \*\*\*\*[**https://zhuanlan.zhihu.com/p/114319666**](https://zhuanlan.zhihu.com/p/114319666)\*\*\*\*
 
