@@ -1,3 +1,7 @@
+---
+description: '本期【艺与术】专栏我们就来聊一聊Lending领域的领头羊Compound Finance, 踮起脚尖我们或许能看到未来金融科技的方向。'
+---
+
 # DeFi从入门到精通之Compound——去中心化的货币市场
 
 ![Compound Finance](https://static1.squarespace.com/static/5bdbaf425417fcc3b68e463d/t/5f1c48a70f881948c76c88c9/1595689155928/Compound+Finance?format=1000w)
