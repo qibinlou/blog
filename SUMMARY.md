@@ -4,6 +4,8 @@
 
 ## draft
 
+* [比特币与我——比特币第一人Hal Finney的自白](draft/bi-te-bi-yu-wo-bi-te-bi-di-yi-ren-hal-finney-de-zi-bai.md)
+
 ## published
 
 * [我的2019技术之路小结](published/summary-of-my-2019-in-tech.md)
